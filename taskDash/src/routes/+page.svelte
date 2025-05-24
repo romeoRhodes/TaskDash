@@ -48,6 +48,11 @@
     }
   
     async function addOrUpdateTask() {
+      if (!title.trim()) {
+        showMessage('Task title cannot be empty', 'error');
+        return;
+      }
+  
       try {
         const url = editingId ? `http://localhost:5000/tasks/${editingId}` : 'http://localhost:5000/tasks';
         const method = editingId ? 'PUT' : 'POST';
@@ -134,3 +139,4 @@
   <style>
     main { font-family: sans-serif; }
   </style>
+  
