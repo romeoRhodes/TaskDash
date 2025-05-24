@@ -1,6 +1,8 @@
 <script>
     import { onMount } from 'svelte';
-    import ConfirmModal from './ConfirmModal.svelte';
+    import ConfirmModal from '$lib/components/ConfirmModal.svelte';
+    import Toast from '$lib/components/Toast.svelte';
+  
     let tasks = [];
     let title = '';
     let token = '';
@@ -103,9 +105,7 @@
   <main class="p-6 max-w-xl mx-auto">
     <h1 class="text-2xl font-bold mb-4">Task Dashboard</h1>
   
-    {#if message}
-      <div class={`mb-4 p-3 rounded ${messageType === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>{message}</div>
-    {/if}
+    <Toast {message} {messageType} />
   
     <div class="mb-4">
       <input bind:value={title} placeholder="New Task" class="border p-2 mr-2 rounded" />
@@ -134,4 +134,3 @@
   <style>
     main { font-family: sans-serif; }
   </style>
-  
